@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sortObj(list, key) {
+            function compare(a, b) {
+                a = a[key];
+                b = b[key];
+                var type = (typeof(a) === 'string' ||
+                            typeof(b) === 'string') ? 'string' : 'number';
+                var result;
+                if (type === 'string') result = a.localeCompare(b);
+                else result = a - b;
+                return result;
+            }
+            return list.sort(compare);
+        }
+
+        var cars= [{brand: 7, speed: 240}, {brand: 2, speed: 190}];
+        var carsSortedByBrand = sortObj(cars, 'brand');
+        console.log(carsSortedByBrand); 
+    </script>
+</body>
+</html>
